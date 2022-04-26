@@ -1,6 +1,8 @@
 # cpp-conan-example
 
-A sample project, written in CPP/C++ which uses CMake, Conan and OpenCV to build the [opencv-cpp-example](https://github.com/opencv/opencv/tree/master/samples/cpp/example_cmake) app.
+A sample project, written in CPP/C++ which uses [CMake](https://cmake.org/), [Conan](https://conan.io/) and [OpenCV](https://opencv.org/) to build the [opencv-cpp-example](https://github.com/opencv/opencv/tree/master/samples/cpp/example_cmake) app.
+
+This project demonstrates how [Conan](https://blog.conan.io/) revolutionized packages/dependencies management in CPP/C++.
 
 **WORK-IN-PROGRESS**: Currently, I've only tested it on my macOS, though I do intend to add more profiles and configurations so this project will be built cross-platform.
 
@@ -110,3 +112,12 @@ We'll use [conancenter](https://docs.conan.io/en/latest/uploading_packages/remot
    "version": 4
    }
    ```
+
+
+## Authors
+
+Created and maintained by [Meir Gabay](https://github.com/unfor19)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/unfor19/cpp-conan-example/blob/master/LICENSE) file for details
