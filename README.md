@@ -17,14 +17,18 @@ This project demonstrates how [Conan](https://blog.conan.io/) revolutionized pac
 
 ### Initial Setup
 
-#### Configuration
 
-Copy configuration files to `~/.conan/`
-
-```bash
-cp conan_files/conan.conf conan_files/settings.yml ~/.conan/ && \
-cp conan_files/profiles/* ~/.conan/profiles/
-```
+1. Git clone this project
+   ```bash
+   git clone https://github.com/unfor19/cpp-conan-example.git
+   cd cpp-conan-example
+   ```
+1. **IMPORTANT**: From now on, the working dir is the cloned project's root dir
+2. Copy configuration files to `~/.conan/`
+   ```bash
+   cp conan_files/conan.conf conan_files/settings.yml ~/.conan/ && \
+   cp conan_files/profiles/* ~/.conan/profiles/
+   ```
 
 <details>
 
