@@ -1,0 +1,7 @@
+[requires]
+opencv/4.5.5
+
+[generators]
+cmake
+visual_studio
+xcode

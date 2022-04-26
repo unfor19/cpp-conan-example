@@ -1,0 +1,19 @@
+# Based on OpenCV CPP Example - https://github.com/opencv/opencv/blob/master/samples/cpp/example_cmake/CMakeLists.txt
+cmake_minimum_required(VERSION 3.1)
+set(CMAKE_CXX_STANDARD 17)
+
+# Define project name - ${PROJECT_NAME}
+project(opencv_example)
+
+### Conan basic setup
+# Acts as CMake's find_package - https://cmake.org/cmake/help/latest/command/find_package.html
+# After this step, use "CONAN_PKG::packagename" to link project dependencies
+# The "packagename" is derived from "conanfile.txt"
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS)
+
+# Declare the executable target built from your sources
+add_executable(${PROJECT_NAME} example.cpp)
+
+# Link final binary to Conan packages
+target_link_libraries(${PROJECT_NAME} PRIVATE CONAN_PKG::opencv)

@@ -1,0 +1,15 @@
+[settings]
+os=Macos
+os_build=Macos
+arch=x86_64
+arch_build=x86_64
+compiler=apple-clang
+compiler.version=13.1
+compiler.libcxx=libc++
+build_type=Release
+cmake:compiler.cppstd=17
+cmake:compiler.libcxx=libstdc++
+
+[options]
+[build_requires]
+[env]
