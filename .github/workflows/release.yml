@@ -27,8 +27,8 @@ jobs:
       - uses: actions/checkout@master
       - name: Install Conan
         run: |
-          python -m pip install -U pip
-          python -m pip install conan==${{ env.CONAN_VERSION }}
+          python3 -m pip install -U pip
+          python3 -m pip install --user conan==${{ env.CONAN_VERSION }}
       - name: Copy configuration files
         run: |
           cp conan_files/conan-github-runner.conf ~/.conan/conan.conf && \
