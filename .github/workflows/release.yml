@@ -51,6 +51,7 @@ jobs:
           conan install ./conan_files  \
             --install-folder ./build \
             -pr:b ${{ matrix.conan_profile }} \
+            -pr:h ${{ matrix.conan_profile }} \
             --build missing
       - name: Conan build the project ${{ env.PROJECT_NAME }}
         run: |
