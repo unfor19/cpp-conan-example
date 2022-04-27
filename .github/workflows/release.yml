@@ -29,9 +29,9 @@ jobs:
         run: |
           python3 -m pip install -U pip
           python3 -m pip install conan==${{ env.CONAN_VERSION }}
-          conan remote add conancenter https://center.conan.io
       - name: Copy configuration files
         run: |
+          mkdir -p ~/.conan/profiles/
           cp conan_files/conan-github-runner.conf ~/.conan/conan.conf && \
           cp conan_files/profiles/* ~/.conan/profiles/
       - name: Cache Conan packages
