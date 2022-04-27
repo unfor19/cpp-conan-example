@@ -10,6 +10,7 @@ on:
 
 env:
   PROJECT_NAME: cpp-conan-example
+  APP_BINARY_PATH: build/bin/opencv_example
   PURGE_CACHE: "1" # Change this value to purge cache
   CONAN_VERSION: "1.47.0"
 
@@ -52,3 +53,8 @@ jobs:
       - name: Conan build the project ${{ env.PROJECT_NAME }}
         run: |
           conan build conan_files --build-folder build --source-folder .
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: "${{ runner.os }}-${{ env.PROJECT_NAME }}"
+          path: ${{ env.APP_BINARY_PATH }}
