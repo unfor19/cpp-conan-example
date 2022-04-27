@@ -1,0 +1,53 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - "README.md"
+  workflow_dispatch: {}
+
+env:
+  PROJECT_NAME: cpp-conan-example
+  PURGE_CACHE: "1" # Change this value to purge cache
+  CONAN_VERSION: "1.47.0"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{ matrix.runner_os }}
+    strategy:
+      matrix:
+        include:
+          - runner_os: macos-12
+            conan_profile: macos-github-runner
+
+    steps:
+      - uses: actions/checkout@master
+      - name: Install Conan
+        run: |
+          python -m pip install -U pip
+          python -m pip install conan==${{ env.CONAN_VERSION }}
+      - name: Copy configuration files
+        run: |
+          cp conan_files/conan.conf conan_files/settings.yml ~/.conan/ && \
+          cp conan_files/profiles/* ~/.conan/profiles/
+      - name: Cache Conan packages
+        id: cache-conan-build
+        uses: actions/cache@v2
+        with:
+          path: |
+            .cache-conan
+          key: ${{ runner.os }}-conan-build-${{ hashFiles('conan_files/**') }}-${{ env.PROJECT_NAME }}-${{ env.PURGE_CACHE }}
+          restore-keys: |
+            ${{ runner.os }}-conan-build-${{ hashFiles('conan_files/**') }}-${{ env.PROJECT_NAME }}-
+      - name: Conan install dependencies and generate the project
+        run: |
+          conan install ./conan_files  \
+            --install-folder ./build \
+            -pr:b ${{ matrix.conan_profile }} \
+            --build missing
+      - name: Conan build the project ${{ env.PROJECT_NAME }}
+        run: |
+          conan build conan_files --build-folder build --source-folder .
