@@ -31,7 +31,7 @@ jobs:
           python -m pip install conan==${{ env.CONAN_VERSION }}
       - name: Copy configuration files
         run: |
-          cp conan_files/conan.conf conan_files/settings.yml ~/.conan/ && \
+          cp conan_files/conan-github-runner.conf ~/.conan/conan.conf && \
           cp conan_files/profiles/* ~/.conan/profiles/
       - name: Cache Conan packages
         id: cache-conan-build
