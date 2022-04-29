@@ -41,7 +41,7 @@ jobs:
             ~/.conan
           key: ${{ runner.os }}-conan-build-${{ hashFiles('conan_files/conanfile.txt') }}-${{ env.PROJECT_NAME }}-${{ env.PURGE_CACHE }}
           restore-keys: |
-            ${{ runner.os }}-conan-build-${{ hashFiles('conan_files/conanfile.txt') }}-${{ env.PROJECT_NAME }}-
+            ${{ runner.os }}-conan-build-${{ hashFiles('conan_files/conanfile.txt') }}-${{ env.PROJECT_NAME }}-${{ env.PURGE_CACHE }}
       - name: Copy configuration files
         run: |
           cp conan_files/conan-github-runner.conf ~/.conan/conan.conf && \
